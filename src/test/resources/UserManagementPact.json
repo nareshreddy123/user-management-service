@@ -1,0 +1,87 @@
+{
+  "consumer": {
+    "name": "ui"
+  },
+  "provider": {
+    "name": "userservice"
+  },
+  "interactions": [
+    {
+      "description": "a request to retrieve a user",
+      "providerState": "retrieves the user",
+      "request": {
+        "method": "POST",
+        "path": "/api/usermgmt/userdetails/retrieve",
+        "headers": {
+          "Authorization": "Basic dXNlcm1nbXQtYWRtaW46YWRtaW4xMjM0"
+        },
+        "body": {
+          	"userId": "345627"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          	"userId": 345627,
+    		"title": "Mrs",
+    		"firstName": "Mary",
+    		"lastName": "Parker",
+    		"emailId": "Mary.Parker@org.com.au",
+    		"gender": "Female",
+    		"address": {
+        		"street": "123 Rowling Rd",
+        		"city": "Sydney",
+        		"state": "NSW",
+        		"postcode": 2000
+    		}
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "update a user",
+      "providerState": "update the user",
+      "request": {
+        "method": "POST",
+        "path": "/api/usermgmt/userdetails/update",
+        "headers": {
+          "Authorization": "Basic dXNlcm1nbXQtYWRtaW46YWRtaW4xMjM0"
+        },
+        "body": {
+          	"userId": 345627,
+    		"title": "Mrs",
+    		"firstName": "Mary",
+    		"lastName": "Parker",
+    		"emailId": "Mary.Parker@org.com.au",
+    		"gender": "Female",
+    		"address": {
+        		"street": "123 Rowling Rd",
+        		"city": "Sydney",
+        		"state": "NSW",
+        		"postcode": 2000
+    		}
+        }
+      },
+      "response": {
+        "status": 200,
+        "matchingRules": {
+          "$.body": {
+            "status": "type"
+          }
+        }
+      }
+    }
+    
+    
+    
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
